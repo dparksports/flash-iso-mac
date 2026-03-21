@@ -1,5 +1,6 @@
 # 🔥 Flash ISO Mac
 
+![Flash ISO Mac](assets/banner.png)
 A simple, minimal, open-source set of Bash scripts that let you create bootable USB drives on macOS. Works with Linux (Ubuntu, Fedora, Arch, Mint, etc.), BSD, and more. No dependencies, no installs — just one script.
 
 ## Scripts
