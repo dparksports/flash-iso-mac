@@ -39,8 +39,34 @@ Disk # (e.g. 2): 2
 ```
 Boot from the USB to try Ubuntu live or install it.
 
-### 🪟 Windows ISOs
-> **Note:** Windows ISOs are **not** hybrid ISOs. Writing them with `dd` will **not** produce a reliably bootable USB drive. For Windows, use a tool like [Rufus](https://rufus.ie), [Ventoy](https://www.ventoy.net), or [WoeUSB](https://github.com/WoeUSB/WoeUSB) instead.
+### 🪟 Windows Install USB (manual steps — `dd` won't work)
+
+Windows ISOs are not hybrid ISOs, so `dd` won't create a bootable drive. Use these macOS-native steps instead:
+
+1. **Format the USB as FAT32:**
+   ```bash
+   diskutil list external                   # find your USB disk number
+   diskutil eraseDisk MS-DOS "WINUSB" GPT /dev/diskN   # replace N with your disk number
+   ```
+2. **Mount the Windows ISO:**
+   ```bash
+   hdiutil mount ~/Downloads/Win11_24H2_English_x64.iso
+   ```
+3. **Copy files to the USB:**
+   ```bash
+   # Copy everything except install.wim (often > 4GB, too large for FAT32)
+   rsync -avh --progress --exclude='sources/install.wim' /Volumes/CCCOMA_X64FRE_EN-US_DV9/ /Volumes/WINUSB/
+
+   # Split install.wim into parts that fit on FAT32
+   # (requires wimlib — install via: brew install wimlib)
+   wimlib-imagex split /Volumes/CCCOMA_X64FRE_EN-US_DV9/sources/install.wim /Volumes/WINUSB/sources/install.swm 3800
+   ```
+4. **Eject:**
+   ```bash
+   diskutil eject /dev/diskN
+   ```
+
+> **Tip:** Volume names may differ. Use `ls /Volumes/` after mounting to find the correct paths.
 
 ### 🐉 Kali Linux (Penetration Testing)
 Download from [kali.org](https://www.kali.org/get-kali/), then:
