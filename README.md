@@ -1,19 +1,21 @@
 # 🔥 Flash ISO Mac
 
-A simple, minimal, open-source Bash script that lets you create a bootable USB drive on macOS. Works with Linux (Ubuntu, Kali, Fedora, Arch, Mint, etc.), BSD, and other hybrid ISO images. No dependencies, no installs — just one script.
+A simple, minimal, open-source set of Bash scripts that let you create bootable USB drives on macOS. Works with Linux (Ubuntu, Kali, Fedora, Arch, Mint, etc.), Windows, BSD, and more. No dependencies, no installs — just one script.
 
 ## Scripts
 
 | Script | Lines | Description |
 |--------|-------|-------------|
-| `flash-iso.sh` | ~90 | Full version with drive verification, size warnings, and safety checks |
+| `flash-iso.sh` | ~90 | Flash Linux/BSD ISOs with drive verification, size warnings, and safety checks |
 | `flash-iso-min.sh` | 4 | Bare-minimum version — same job, zero fluff |
+| `flash-win.sh` | ~70 | Create a bootable Windows install USB from a Windows ISO |
 
 ## Requirements
 
 - macOS
 - A USB drive
 - An `.iso` file (Linux, Windows, Ubuntu, etc.)
+- For Windows: `wimlib` (`brew install wimlib`) — only needed if `install.wim` > 4 GB
 
 ## Usage
 
@@ -39,34 +41,11 @@ Disk # (e.g. 2): 2
 ```
 Boot from the USB to try Ubuntu live or install it.
 
-### 🪟 Windows Install USB (manual steps — `dd` won't work)
-
-Windows ISOs are not hybrid ISOs, so `dd` won't create a bootable drive. Use these macOS-native steps instead:
-
-1. **Format the USB as FAT32:**
-   ```bash
-   diskutil list external                   # find your USB disk number
-   diskutil eraseDisk MS-DOS "WINUSB" GPT /dev/diskN   # replace N with your disk number
-   ```
-2. **Mount the Windows ISO:**
-   ```bash
-   hdiutil mount ~/Downloads/Win11_24H2_English_x64.iso
-   ```
-3. **Copy files to the USB:**
-   ```bash
-   # Copy everything except install.wim (often > 4GB, too large for FAT32)
-   rsync -avh --progress --exclude='sources/install.wim' /Volumes/CCCOMA_X64FRE_EN-US_DV9/ /Volumes/WINUSB/
-
-   # Split install.wim into parts that fit on FAT32
-   # (requires wimlib — install via: brew install wimlib)
-   wimlib-imagex split /Volumes/CCCOMA_X64FRE_EN-US_DV9/sources/install.wim /Volumes/WINUSB/sources/install.swm 3800
-   ```
-4. **Eject:**
-   ```bash
-   diskutil eject /dev/diskN
-   ```
-
-> **Tip:** Volume names may differ. Use `ls /Volumes/` after mounting to find the correct paths.
+### 🪟 Windows Install USB
+```bash
+chmod +x flash-win.sh
+./flash-win.sh
+```
 
 ### 🐉 Kali Linux (Penetration Testing)
 Download from [kali.org](https://www.kali.org/get-kali/), then:
