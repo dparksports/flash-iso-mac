@@ -23,25 +23,26 @@ A simple, minimal, open-source set of Bash scripts that let you create bootable 
 ### Linux / BSD
 **Full version:**
 ```bash
-chmod +x flash-iso.sh
-./flash-iso.sh
+bash flash-iso.sh
 ```
 
 **Minimal version (4 lines):**
+```bash
+bash flash-iso-min.sh
+```
+
 ### 🪟 Windows Install USB
 
 **Full version:**
 ```bash
-chmod +x flash-win.sh
-./flash-win.sh
+bash flash-win.sh
 ```
 
 **Minimal version (4 lines):**
 ```bash
-chmod +x flash-win-min.sh
-./flash-win-min.sh
+bash flash-win-min.sh
 ```
-The script will (requires `wimlib` installed via homebrew):
+The Windows script will (requires `wimlib` installed via homebrew):
 1. Format the USB as FAT32 (GPT/UEFI)
 2. Mount the ISO and copy all files to the USB
 3. Automatically split `install.wim` if it's larger than 4 GB
