@@ -71,6 +71,8 @@ Disk # (e.g. 2): 2
 ```
 Supports both installer and live ISO versions.
 
+> **Note — Apple Silicon (M1/M2/M3/M4):** M-series Macs do **not** support booting from USB like Intel Macs or PCs. To run Kali on Apple Silicon, use a VM such as [UTM](https://mac.getutm.app) with the Kali ARM64 image. The USB you create with this script will still work on Intel Macs and PCs.
+
 ### 🔥 Other Live Linux ISOs
 Works with any bootable ISO — Fedora, Arch, Mint, Tails, Pop!_OS, etc.:
 ```
