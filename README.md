@@ -19,6 +19,7 @@ A simple, minimal, open-source set of Bash scripts that let you create bootable 
 
 ## Usage
 
+### Linux / BSD
 **Full version:**
 ```bash
 chmod +x flash-iso.sh
@@ -31,6 +32,20 @@ chmod +x flash-iso-min.sh
 ./flash-iso-min.sh
 ```
 
+### Windows
+```bash
+chmod +x flash-win.sh
+./flash-win.sh
+```
+The script will:
+1. Ask you to drag and drop your Windows `.iso` file
+2. List external drives so you can pick your USB
+3. Show the drive name and size for verification
+4. Format the USB as FAT32 (GPT/UEFI)
+5. Mount the ISO and copy all files to the USB
+6. Automatically split `install.wim` if it's larger than 4 GB (requires `wimlib`)
+7. Eject the USB when done
+
 ## Sample Use Cases
 
 ### 🐧 Ubuntu Desktop (Live USB)
@@ -42,9 +57,10 @@ Disk # (e.g. 2): 2
 Boot from the USB to try Ubuntu live or install it.
 
 ### 🪟 Windows Install USB
-```bash
-chmod +x flash-win.sh
-./flash-win.sh
+Download the ISO from [microsoft.com](https://www.microsoft.com/software-download/windows11), then:
+```
+ISO path: ~/Downloads/Win11_24H2_English_x64.iso
+Disk # (e.g. 2): 2
 ```
 
 ### 🐉 Kali Linux (Penetration Testing)
