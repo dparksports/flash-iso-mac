@@ -1,6 +1,6 @@
 # 🔥 Flash ISO Mac
 
-A simple, minimal, open-source Bash script that lets you create a bootable USB drive on macOS. Works with Windows, Linux, Ubuntu, Kali, BSD, and any other ISO image. No dependencies, no installs — just one script.
+A simple, minimal, open-source Bash script that lets you create a bootable USB drive on macOS. Works with Linux (Ubuntu, Kali, Fedora, Arch, Mint, etc.), BSD, and other hybrid ISO images. No dependencies, no installs — just one script.
 
 ## Scripts
 
@@ -39,12 +39,8 @@ Disk # (e.g. 2): 2
 ```
 Boot from the USB to try Ubuntu live or install it.
 
-### 🪟 Windows 11
-Download the ISO from [microsoft.com](https://www.microsoft.com/software-download/windows11), then:
-```
-ISO path: ~/Downloads/Win11_24H2_English_x64.iso
-Disk # (e.g. 2): 2
-```
+### 🪟 Windows ISOs
+> **Note:** Windows ISOs are **not** hybrid ISOs. Writing them with `dd` will **not** produce a reliably bootable USB drive. For Windows, use a tool like [Rufus](https://rufus.ie), [Ventoy](https://www.ventoy.net), or [WoeUSB](https://github.com/WoeUSB/WoeUSB) instead.
 
 ### 🐉 Kali Linux (Penetration Testing)
 Download from [kali.org](https://www.kali.org/get-kali/), then:
