@@ -2,12 +2,12 @@
 
 A simple, minimal, open-source Bash script for flashing Linux ISO images to USB drives on macOS. No dependencies, no installs — just one script.
 
-## Features
+## Scripts
 
-- **Dead simple** — one script, no setup required
-- **Drag-and-drop ISO input** — drag your `.iso` file into the Terminal prompt
-- **Safe by default** — only lists external drives, verifies drive name and size, and requires explicit confirmation before writing
-- **Large-drive warning** — warns if the target looks too big to be a USB stick
+| Script | Lines | Description |
+|--------|-------|-------------|
+| `flash-iso.sh` | ~90 | Full version with drive verification, size warnings, and safety checks |
+| `flash-iso-min.sh` | 4 | Bare-minimum version — same job, zero fluff |
 
 ## Requirements
 
@@ -17,19 +17,21 @@ A simple, minimal, open-source Bash script for flashing Linux ISO images to USB 
 
 ## Usage
 
+**Full version:**
 ```bash
 chmod +x flash-iso.sh
 ./flash-iso.sh
 ```
 
-1. Drag and drop your `.iso` file into the Terminal when prompted.
-2. Pick your USB drive from the list of external drives.
-3. Verify the drive name and size.
-4. Type `yes` to confirm — the script writes the image and ejects the drive.
+**Minimal version (4 lines):**
+```bash
+chmod +x flash-iso-min.sh
+./flash-iso-min.sh
+```
 
 ## ⚠️ Warning
 
-This tool uses `sudo dd` to write raw data directly to a disk. **All existing data on the target drive will be permanently erased.**
+These tools use `sudo dd` to write raw data directly to a disk. **All existing data on the target drive will be permanently erased.**
 
 ## License
 
