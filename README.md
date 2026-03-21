@@ -1,6 +1,6 @@
 # 🔥 Flash ISO Mac
 
-A simple, minimal, open-source Bash script for flashing ISO images to USB drives on macOS. Works with any ISO — Linux (Ubuntu, Fedora, Arch, etc.), Windows, and more. No dependencies, no installs — just one script.
+A simple, minimal, open-source Bash script that lets you create a bootable USB drive on macOS. Works with Windows, Linux, Ubuntu, Kali, BSD, and any other ISO image. No dependencies, no installs — just one script.
 
 ## Scripts
 
