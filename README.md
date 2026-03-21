@@ -71,7 +71,12 @@ Disk # (e.g. 2): 2
 ```
 Supports both installer and live ISO versions.
 
-> **Note — Apple Silicon (M1/M2/M3/M4):** M-series Macs do **not** support booting from USB like Intel Macs or PCs. To run Kali on Apple Silicon, use a VM such as [UTM](https://mac.getutm.app) with the Kali ARM64 image. The USB you create with this script will still work on Intel Macs and PCs.
+> **Note — Apple Silicon (M1/M2/M3/M4):** M-series Macs do **not** support booting from USB. To run Kali, you must use a Virtual Machine:
+> 1. Download and install [UTM for Mac](https://mac.getutm.app/).
+> 2. Download the **Kali Linux Apple Silicon (ARM64) Installer** ISO from [kali.org](https://www.kali.org/get-kali/#kali-installer-images).
+> 3. Open UTM > Create a New Virtual Machine > Virtualize > Linux.
+> 4. Select the Kali ARM64 ISO as the boot image.
+> 5. Follow the UTM prompts to allocate RAM/CPU and finish the Kali installation.
 
 ### 🔥 Other Live Linux ISOs
 Works with any bootable ISO — Fedora, Arch, Mint, Tails, Pop!_OS, etc.:
